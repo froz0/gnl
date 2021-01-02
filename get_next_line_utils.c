@@ -6,13 +6,13 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 15:02:17 by tmatis            #+#    #+#             */
-/*   Updated: 2020/10/31 15:04:04 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/01/02 16:50:30 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			ft_getendl(t_chunk *chunk)
+int	ft_getendl(t_chunk *chunk)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ int			ft_getendl(t_chunk *chunk)
 	return (-1);
 }
 
-char		*ft_extractstr(t_chunk *chunk, int size)
+char	*ft_extractstr(t_chunk *chunk, int size)
 {
 	char	*dest;
 	int		i;
@@ -44,7 +44,7 @@ char		*ft_extractstr(t_chunk *chunk, int size)
 	return (dest);
 }
 
-t_chunk		*ft_rallocut(t_chunk *chunk, int start)
+t_chunk	*ft_rallocut(t_chunk *chunk, int start)
 {
 	char	*dest;
 	int		len;
@@ -66,7 +66,7 @@ t_chunk		*ft_rallocut(t_chunk *chunk, int start)
 	return (chunk);
 }
 
-t_chunk		*ft_rallocat(t_chunk *chunk, char *data, int len)
+t_chunk	*ft_rallocat(t_chunk *chunk, char *data, int len)
 {
 	char	*dest;
 	int		i;
@@ -91,7 +91,7 @@ t_chunk		*ft_rallocat(t_chunk *chunk, char *data, int len)
 	return (chunk);
 }
 
-void		ft_initchunk(t_chunk *chunk)
+void	ft_initchunk(t_chunk *chunk)
 {
 	chunk->init = 1;
 	chunk->data = malloc(sizeof(char));
