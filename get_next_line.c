@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 21:38:49 by tmatis            #+#    #+#             */
-/*   Updated: 2021/01/02 16:47:33 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/01/07 21:07:29 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,18 @@ int	get_next_line(int fd, char **line)
 	if (!chunk[fd].init)
 		ft_initchunk(&chunk[fd]);
 	pos = ft_getendl(&chunk[fd]);
-	readed = read(fd, buffer, BUFFER_SIZE);
+	if (pos == -1)
+		readed = read(fd, buffer, BUFFER_SIZE);
 	while (pos == -1 && readed != 0)
 	{
 		if (readed == -1)
 			return (ft_uninitchunk(&chunk[fd], -1));
 		ft_rallocat(&chunk[fd], buffer, readed);
 		pos = ft_getendl(&chunk[fd]);
-		readed = read(fd, buffer, BUFFER_SIZE);
+		if (pos == -1)
+			readed = read(fd, buffer, BUFFER_SIZE);
+		else
+			break ;
 	}
 	return (ft_compute(&chunk[fd], line, pos));
 }
